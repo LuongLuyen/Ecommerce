@@ -2,6 +2,7 @@ package com.javaspring.config;
 
 import java.util.Properties;
 
+import javax.annotation.PreDestroy;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
@@ -15,6 +16,8 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import com.mysql.cj.jdbc.AbandonedConnectionCleanupThread;
 
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.javaspring.repository"})
@@ -65,9 +68,15 @@ public class JPAConfig {
 	
 	Properties additionalProperties() {
 		Properties properties = new Properties();
-//		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop"); // dev
+		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop"); // dev
 //		properties.setProperty("hibernate.hbm2ddl.auto", "none"); // docker
-		properties.setProperty("hibernate.hbm2ddl.auto", "update"); 
+//		properties.setProperty("hibernate.hbm2ddl.auto", "update"); 
 		return properties;
 	}
+	@PreDestroy
+	public void cleanup() {
+	    AbandonedConnectionCleanupThread.checkedShutdown();
+	}
+
+
 }
