@@ -4,3 +4,5 @@ target
 .settings
 *.classpath
 *.project
+.env
+src/main/resources/application.properties
