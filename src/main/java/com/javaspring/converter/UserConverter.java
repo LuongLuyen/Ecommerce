@@ -11,7 +11,7 @@ public class UserConverter {
 		UserDto result = new UserDto();
 		if (entity!= null) {
 			result.setId(entity.getId());
-			result.setUserName(entity.getFullName());
+			result.setUserName(entity.getUserName());
 			result.setPassword(entity.getPassword());
 			result.setFullName(entity.getFullName());
 			result.setPhone(entity.getPhone());
@@ -22,7 +22,7 @@ public class UserConverter {
 	}
 	public UserEntity toEntity(UserDto dto) {
 		UserEntity result = new UserEntity();
-		result.setUserName(dto.getFullName());
+		result.setUserName(dto.getUserName());
 		result.setPassword(dto.getPassword());
 		result.setFullName(dto.getFullName());
 		result.setPhone(dto.getPhone());
@@ -30,7 +30,7 @@ public class UserConverter {
 		return result;
 	}
 	public UserEntity toEntity(UserEntity result, UserDto dto) {
-		result.setUserName(dto.getFullName());
+		result.setUserName(dto.getUserName());
 		result.setPassword(dto.getPassword());
 		result.setFullName(dto.getFullName());
 		result.setPhone(dto.getPhone());
