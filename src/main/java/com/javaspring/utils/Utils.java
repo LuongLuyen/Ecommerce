@@ -37,13 +37,17 @@ public class Utils {
 	public static Boolean isAdmin(HttpServletRequest request) {
 	    String token = (String) Session.getAttribute(request, "token");
 	    request.setAttribute("token", token);
-	    String role = String.valueOf(token.charAt(0));
-	   
-		if (role.equals("1")) {
-            return true;
-        }else {
-        	return false;
-        }
+	    try {
+		    String role = String.valueOf(token.charAt(0));
+			if (role.equals("1")) {
+	            return true;
+	        }else {
+	        	return false;
+	        }
+		} catch (Exception e) {
+			return true;//not admin
+		}
+
 	}
 	
 	   // validateString pssword

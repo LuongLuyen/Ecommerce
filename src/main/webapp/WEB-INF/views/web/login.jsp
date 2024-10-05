@@ -16,7 +16,7 @@
 			name="username" required><br> <br> <label
 			for="password">Password:</label> <input type="password" id="password"
 			name="password" required><br> <br> <input
-			type="submit" value="Submit">
+			type="submit" value="Login">
 	</form>
 	<p class="error">${error}</p>
 	<div class="qmk">

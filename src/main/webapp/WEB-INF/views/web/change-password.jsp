@@ -5,17 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>ChangePassword</title>
 
 </head>
 <body>
-	<h1>Home Web</h1>
+	<h1>ChangePassword</h1>
 	<p>Trạng thái Login: ${checkLogin}</p>
 	<div>
-		<a href="admin">Đến trang admin</a>
-	</div>
-	<div>
-		<a href="change-password">Thay đổi mật khẩu</a>
+		<a href="home">Đến trang home</a>
 	</div>
 	<div>
 		<form action='logout' method="post">

@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Admin</title>
 
 </head>
 <body>
-	<h1>Home Web</h1>
+	<h1>Admin Web</h1>
 	<p>Trạng thái Login: ${checkLogin}</p>
 	<div>
-		<a href="admin">Đến trang admin</a>
+		<a href="home">Đến trang home</a>
 	</div>
 	<div>
 		<a href="change-password">Thay đổi mật khẩu</a>

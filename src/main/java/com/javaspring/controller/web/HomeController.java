@@ -17,44 +17,62 @@ import com.javaspring.utils.Utils;
 
 @Controller(value = "homeControllerOfWeb")
 public class HomeController {
-	
+
 	@Autowired
 	private IUserService userService;
-	
-	
+
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public ModelAndView homePage(HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView("web/home");
-		return mav;
+	public ModelAndView homePage(HttpServletRequest request, Model model) {
+		Boolean checkLogin = Utils.isLoggedIn(request);
+		if (checkLogin) {
+			model.addAttribute("checkLogin", "Đã đăng nhập");
+			ModelAndView mav = new ModelAndView("web/home");
+			return mav;
+		} else {
+			model.addAttribute("error", "Bạn chưa đăng nhập");
+			ModelAndView mav = new ModelAndView("web/login");
+			return mav;
+		}
 	}
 
-	
+	@RequestMapping(value = "/change-password", method = RequestMethod.GET)
+	public ModelAndView changePasswordPage(HttpServletRequest request, Model model) {
+		Boolean checkLogin = Utils.isLoggedIn(request);
+		if (checkLogin) {
+			model.addAttribute("checkLogin", "Đã đăng nhập");
+			ModelAndView mav = new ModelAndView("web/change-password");
+			return mav;
+		} else {
+			ModelAndView mav = new ModelAndView("web/login");
+			return mav;
+		}
+	}
+
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
 	public String login(@RequestParam("username") String username, @RequestParam("password") String password,
 			Model model, HttpServletRequest request) {
-			try {
-				UserDto userDB = new UserDto();
-				userDB = userService.login(username, password);
-				if (userDB.getUserName().equals(username) && userDB.getPassword().equals(password)) {
-					String genericToken = userDB.getId() + Utils.getToken() + password;
-					model.addAttribute("username", username);
-					model.addAttribute("password", password);
-					Session.setAttribute(request, "token", genericToken);
-					Boolean checkLogin = Utils.isLoggedIn(request);
-					if (checkLogin) {
-						model.addAttribute("checkLogin", "Đã đăng nhập");
-						return "web/home";
-					} else {
-						return "redirect:/login";
-					}
+		try {
+			UserDto userDB = new UserDto();
+			userDB = userService.login(username, password);
+			String genericToken = userDB.getId() + Utils.getToken() + password;
+			Session.setAttribute(request, "token", genericToken);
+			Boolean checkLogin = Utils.isLoggedIn(request);
+			if (userDB.getUserName().equals(username) && userDB.getPassword().equals(password)) {
+				if (checkLogin) {
+					model.addAttribute("checkLogin", "Đã đăng nhập");
+					return "web/home";
 				} else {
-					model.addAttribute("error", "Vui lòng kiểm tra lại thông tin");
-					return "web/login";
+					return "redirect:/login";
 				}
-			} catch (Exception e) {
-				model.addAttribute("error", "Lỗi ngoại lệ");
+			} else {
+				model.addAttribute("error", "Vui lòng kiểm tra lại thông tin");
 				return "web/login";
 			}
+
+		} catch (Exception e) {
+			model.addAttribute("error", "Người dùng không tồn tại trong hệ thống");
+			return "web/login";
+		}
 	}
 
 }
