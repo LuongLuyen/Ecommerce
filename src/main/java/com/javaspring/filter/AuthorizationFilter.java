@@ -15,6 +15,7 @@ import com.javaspring.utils.Utils;
 
 public class AuthorizationFilter implements Filter {
 
+
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		filterConfig.getServletContext();
@@ -26,16 +27,17 @@ public class AuthorizationFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		String url = httpRequest.getRequestURI();
-
-		if (url.startsWith("/spring-MVC/admin")) {
+		String rootutl ="/spring-MVC/";// development
+//		String rootutl ="/";// production
+		if (url.startsWith(rootutl+"admin")) {
 			if (Utils.isAdmin(httpRequest)) {// admin co id =1
 				chain.doFilter(request, response);
 			} else {// user con lai
 				httpResponse.sendRedirect(httpRequest.getContextPath() + "/login"); // no role admin
 			}
-		} else if (url.startsWith("/spring-MVC/test")) {
+		} else if (url.startsWith(rootutl+"test")) {
 			chain.doFilter(request, response);
-		} else if (url.startsWith("/spring-MVC/")) {
+		} else if (url.startsWith(rootutl)) {
 			chain.doFilter(request, response);
 		}
 

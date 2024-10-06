@@ -34,6 +34,45 @@ public class HomeController {
 			return mav;
 		}
 	}
+	@RequestMapping(value = "/fashion", method = RequestMethod.GET)
+	public ModelAndView fashionPage(HttpServletRequest request, Model model) {
+		Boolean checkLogin = Utils.isLoggedIn(request);
+		if (checkLogin) {
+			model.addAttribute("checkLogin", "Đã đăng nhập");
+			ModelAndView mav = new ModelAndView("web/fashion");
+			return mav;
+		} else {
+			model.addAttribute("error", "Bạn chưa đăng nhập");
+			ModelAndView mav = new ModelAndView("web/login");
+			return mav;
+		}
+	}
+	@RequestMapping(value = "/electronic", method = RequestMethod.GET)
+	public ModelAndView electronicPage(HttpServletRequest request, Model model) {
+		Boolean checkLogin = Utils.isLoggedIn(request);
+		if (checkLogin) {
+			model.addAttribute("checkLogin", "Đã đăng nhập");
+			ModelAndView mav = new ModelAndView("web/electronic");
+			return mav;
+		} else {
+			model.addAttribute("error", "Bạn chưa đăng nhập");
+			ModelAndView mav = new ModelAndView("web/login");
+			return mav;
+		}
+	}
+	@RequestMapping(value = "/jewellery", method = RequestMethod.GET)
+	public ModelAndView jewelleryPage(HttpServletRequest request, Model model) {
+		Boolean checkLogin = Utils.isLoggedIn(request);
+		if (checkLogin) {
+			model.addAttribute("checkLogin", "Đã đăng nhập");
+			ModelAndView mav = new ModelAndView("web/jewellery");
+			return mav;
+		} else {
+			model.addAttribute("error", "Bạn chưa đăng nhập");
+			ModelAndView mav = new ModelAndView("web/login");
+			return mav;
+		}
+	}
 
 	@RequestMapping(value = "/change-password", method = RequestMethod.GET)
 	public ModelAndView changePasswordPage(HttpServletRequest request, Model model) {
