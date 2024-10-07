@@ -73,6 +73,19 @@ public class HomeController {
 			return mav;
 		}
 	}
+	@RequestMapping(value = "/payment", method = RequestMethod.GET)
+	public ModelAndView paymentPage(HttpServletRequest request, Model model) {
+		Boolean checkLogin = Utils.isLoggedIn(request);
+		if (checkLogin) {
+			model.addAttribute("checkLogin", "Đã đăng nhập");
+			ModelAndView mav = new ModelAndView("web/payment");
+			return mav;
+		} else {
+			model.addAttribute("error", "Bạn chưa đăng nhập");
+			ModelAndView mav = new ModelAndView("web/login");
+			return mav;
+		}
+	}
 
 	@RequestMapping(value = "/change-password", method = RequestMethod.GET)
 	public ModelAndView changePasswordPage(HttpServletRequest request, Model model) {

@@ -771,17 +771,17 @@ a:hover {
 }
 
 .loader {
-    border: 16px solid #f3f3f3;
+/*     border: 16px solid #f3f3f3;
     border-radius: 50%;
     border-top: 16px solid #414744;
     border-right: 16px solid #f26522;
     border-bottom: 16px solid #414744;
-    border-left: 16px solid #f26522;
+    border-left: 16px solid #f26522; */
     width: 120px;
     height: 120px;
-    -webkit-animation: spin 2s linear infinite;
+   /*  -webkit-animation: spin 2s linear infinite;
     animation: spin 6s linear infinite;
-    margin: 0 auto;
+    margin: 0 auto; */
 }
 
 @-webkit-keyframes spin {
