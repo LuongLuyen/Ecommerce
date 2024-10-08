@@ -12,7 +12,7 @@
 						<div class="row">
 							<div class="col-lg-4 col-sm-4">
 								<div class="box_main">
-									<h4 class="shirt_text">Jumkas</h4>
+									<h4 class="shirt_text">Bông tai</h4>
 									<p class="price_text">
 										Giá <span style="color: #262626;">$ 100</span>
 									</p>
@@ -81,7 +81,7 @@
 						<div class="row">
 							<div class="col-lg-4 col-sm-4">
 								<div class="box_main">
-									<h4 class="shirt_text">Jumkas</h4>
+									<h4 class="shirt_text">Bông tai</h4>
 									<p class="price_text">
 										Giá <span style="color: #262626;">$ 100</span>
 									</p>
@@ -150,7 +150,7 @@
 						<div class="row">
 							<div class="col-lg-4 col-sm-4">
 								<div class="box_main">
-									<h4 class="shirt_text">Jumkas</h4>
+									<h4 class="shirt_text">Bông tai</h4>
 									<p class="price_text">
 										Giá <span style="color: #262626;">$ 100</span>
 									</p>

@@ -1,10 +1,14 @@
 package com.javaspring.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +25,16 @@ public class UserEntity {
 	private String fullName;
 	private String phone;
 	private String email;
+	private String role;
+	// 1-n user-card
+	@OneToMany(mappedBy = "user")
+	private List<CardEntity> card = new ArrayList<>();
+	// 1-n user-payment
+	@OneToMany(mappedBy = "user")
+	private List<PaymentEntity> payment = new ArrayList<>();
+	// 1-n user-product
+	@OneToMany(mappedBy = "user")
+	private List<ProductEntity> product = new ArrayList<>();
 
 	public UserEntity() {
 		super();
@@ -70,6 +84,13 @@ public class UserEntity {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 }

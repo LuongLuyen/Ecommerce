@@ -4,8 +4,8 @@
 <div class="footer_section layout_padding">
 	<div class="container">
 		<div class="footer_logo">
-			<a href="home"><img
-				src="<c:url value='/resources/static/template/home/images/footer-logo.png'/>"></a>
+			<a href="home"><img style =" border-radius: 10px;"
+				src="<c:url value='/resources/static/template/home/images/logo.png'/>"></a>
 		</div>
 		<div class="input_bt">
 			<input type="text" class="mail_bt" placeholder="Email của bạn"

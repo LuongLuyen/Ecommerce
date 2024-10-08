@@ -27,7 +27,7 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="logo">
-						<a href="home"><img
+						<a href="home"><img style =" border-radius: 10px;"
 							src="<c:url value='/resources/static/template/home/images/logo.png'/>"></a>
 					</div>
 				</div>
